@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 const mockUserData = [
-  { name: 'Mark' },
-  { name: 'Jill' }
+  { name: 'Hemdan', age: 21 },
+  { name: 'Jill', age: 45 }
 ]
 
 app.get('/users', function (req, res) {
@@ -11,6 +11,14 @@ app.get('/users', function (req, res) {
     success: true,
     message: 'successfully got users. Nice!',
     users: mockUserData
+  })
+})
+app.get('/users/:id', function (req, res) {
+  console.log(req.params.id)
+  res.json({
+    success: true,
+    message: 'got one user',
+    user: req.params.id
   })
 })
 
